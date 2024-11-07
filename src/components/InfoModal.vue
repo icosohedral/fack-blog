@@ -3,9 +3,14 @@
     name="modal-fade"
     @leave="leave"
   >
-  <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-20" @click="closeModal">
-      <!-- 你的模态框内容 -->
-      <div id="modal_window" class="p-6 rounded-lg shadow-lg w-3/4 lg:w-1/6 md:w-1/3 animate__animated animate__fadeInUp bg-gray-300" @click.stop>
+    <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-20" @click="closeModal">
+      <!-- Modal Content -->
+      <div id="modal_window" class="pt-4 p-6 rounded-lg shadow-lg w-3/4 lg:w-1/6 md:w-1/3 animate__animated animate__fadeInUp bg-white relative" @click.stop>
+        <!-- Close Icon -->
+        <button @click="closeModal" class="absolute top-2 right-2 text-white bg-red-500 hover:bg-red-600 rounded-lg focus:outline-none ">
+          <span class="material-symbols--close-small-rounded ">close</span>
+        </button>
+
         <h2 class="text-lg mb-4 font-bold text-left text-slate-800">
           <i class="material-symbols--note text-md" style="vertical-align: middle; line-height: 1;" />
           {{ title }}
@@ -15,18 +20,11 @@
             {{ content }}
           </slot>
         </div>
-        <div class="flex justify-end space-x-2">
-          <button 
-            @click="closeModal" 
-            class="px-4 py-1.5 rounded bg-opacity-90 hover:text-gray-50 bg-gray-600 hover:bg-gray-600 text-gray-100"
-          >
-            确定
-          </button>
-        </div>
       </div>
     </div>
   </transition>
 </template>
+
 
 <script>
 import 'animate.css';
